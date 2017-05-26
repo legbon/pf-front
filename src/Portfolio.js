@@ -10,9 +10,9 @@ class Portfolio extends Component {
 
     const items = _.map(this.props.data, (item, key) => {
       return (
-        <Col xs="12" sm="6" md="6" lg="4"  key={key}>
-          <PortfolioEntry item={item} />
-        </Col>
+      <Col key={key} xs="12" sm="6" md="6" lg="4">
+          <PortfolioEntry  item={item} />
+      </Col>
         );
     });
     return (
