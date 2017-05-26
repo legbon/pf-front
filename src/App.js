@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 
 import { Container, Row, Col } from 'reactstrap';
+import './loader.css';
 
 import Portfolio from './Portfolio';
 class App extends Component {
@@ -11,7 +12,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      plans: [],
       projects: []
     };
   }
@@ -22,8 +22,11 @@ class App extends Component {
     this.serverRequest = 
       axios
         .get("http://pf.dev/api/all")
-        .then(function(result) {    
+        .then(function(result) {
+          setTimeout(() => {
+
           _this.setState(result.data);
+          }, 2500)
         });
   }
 
@@ -31,8 +34,18 @@ class App extends Component {
     this.serverRequest.abort();
   }
 
+  display() {
+    
+    if(this.state.projects.length == 0 ) {
+      return (<div className="loader">Loading...</div>);
+    } else {
+      return (<Portfolio data={this.state.projects} header={"Projects"} />);
+    }
+
+  }
 
   render() {
+
     return (
       <div className="App">
         <div className="App-Header">
@@ -45,7 +58,7 @@ class App extends Component {
             <Row>
               <Col><hr /></Col>
             </Row>
-            <Portfolio data={this.state.projects} header={"Projects"}/>
+            {this.display()}
           </Container>
         </div>
       </div>
