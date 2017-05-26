@@ -22,11 +22,8 @@ class App extends Component {
     this.serverRequest = 
       axios
         .get("http://pf.dev/api/all")
-        .then(function(result) {
-          setTimeout(() => {
-
-          _this.setState(result.data);
-          }, 2500)
+        .then(function(result) { 
+          _this.setState(result.data); 
         });
   }
 
