@@ -26,13 +26,13 @@ class CollapseText extends Component {
       if(this.state.collapsed) {
         return (
           <div>
-            <p> {this.truncate(text, size)} <a className="link" href="#" onClick={() => this.setState({collapsed: !this.state.collapsed})}> read more </a> </p>
+            <p> {this.truncate(text, size)} <button className="btn-link link-butt" onClick={() => this.setState({collapsed: !this.state.collapsed})}> read more </button> </p>
           </div>
         );
       } else {
         return (
           <div>
-            <p> {text} <a className="link"  href="#" onClick={() => this.setState({collapsed: !this.state.collapsed})}> read less </a> </p>
+            <p> {text} <button className="btn-link link-butt"  onClick={() => this.setState({collapsed: !this.state.collapsed})}> read less </button> </p>
           </div>
         );
       }

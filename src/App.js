@@ -36,7 +36,7 @@ class App extends Component {
 
   display() {
     
-    if(this.state.projects.length == 0 ) {
+    if(this.state.projects.length === 0 ) {
       return (<div className="loader">Loading...</div>);
     } else {
       return (<Portfolio data={this.state.projects} header={"Projects"} />);
